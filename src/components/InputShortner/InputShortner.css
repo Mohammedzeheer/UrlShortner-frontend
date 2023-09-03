@@ -1,0 +1,114 @@
+/* .Container{
+height: 60vh;
+margin-bottom: -5rem;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+} */
+
+.InputContainer h1{
+  font-size: 3.5rem;
+  color:white
+}
+
+.InputContainer h1 span{
+  color:#ffa116;
+  font-size: 3.5rem;
+}
+
+.InputContainer div{
+  display: flex;
+  margin-bottom: 2rem;
+}
+.InputContainer input{
+  width:99%;
+  padding: 0.5rem 0.2rem 0.5rem 0;
+  text-indent: 1rem;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.InputContainer::placeholder{
+ font-size: 0.9rem;
+}
+
+.InputContainer button{
+  padding: 0.3rem;
+  height: 3rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  color:white;
+  border: none;
+  background: #ffa116;
+  cursor: pointer;
+ }
+
+
+
+
+/* .App {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: antiquewhite;
+  }
+  
+  .shorten-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  input[type="url"] {
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .shorten-form button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #ffa116ff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  .shortened-url {
+    margin-top: 20px;
+    font-size: 18px;
+  }
+  
+  .shortened-url p {
+    margin-bottom: 10px;
+  }
+  
+  .shortened-url a {
+    text-decoration: none;
+    color: #007BFF;
+  }
+  
+  .shortened-url a:hover {
+    text-decoration: underline;
+  }
+   */

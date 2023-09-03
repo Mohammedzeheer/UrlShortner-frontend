@@ -1,0 +1,48 @@
+.result{
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 0.5 rem,1rem;
+}
+
+.copysymbol{
+    font-size: 1rem;
+}
+
+.result p{
+    color: #fff;
+    border: 1px solid #ffa116ff;
+    padding: 0.5rem 1rem;
+    margin-right: 1rem;
+}
+
+.result button{
+    padding: 0.7rem 1rem;
+    cursor: pointer;
+    color: white;
+    background: #ffa116;
+    border:none
+}
+.result button.copied{
+    background: #fff;
+    color:#ffa116
+}
+
+.noData{
+    color: white;
+    font-size: 1rem;
+    align-items: center;
+}
+
+.create button{
+    padding: 0.7rem 1rem;
+    cursor: pointer;
+    color: white;
+    background: #ffa116;
+    border:none
+}
+
+.create button.create{
+    background: #fff;
+    color:#ffa116
+}
