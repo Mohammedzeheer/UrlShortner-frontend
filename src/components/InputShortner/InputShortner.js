@@ -20,7 +20,7 @@ function InputShortner({setInputValue}) {
             value={originalURL}
             onChange={(e) => setOriginalURL(e.target.value)}
           />
-          <button onClick={handleClick}>Shorten</button>
+          <button className='hover:bg-orange-500' onClick={handleClick}>Shorten</button>
         </div>
       </div>
     // </div>
