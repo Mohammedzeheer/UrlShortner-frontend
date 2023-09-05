@@ -10,7 +10,8 @@ function Login() {
     <>
       {!token && (
         <div className="googleLogin">
-          <GoogleOAuthProvider clientId={process.env.REACT_APP_clientId}>
+          <GoogleOAuthProvider clientId="376497180189-21t71ir6d7ld1jcqdnb1p5bnr3a809c7.apps.googleusercontent.com">
+          {/* <GoogleOAuthProvider clientId={process.env.REACT_APP_clientId}> */}
             <GoogleLogin
               onSuccess={async (credentialResponse) => {
                 let decoded = jwt_decode(credentialResponse.credential);
