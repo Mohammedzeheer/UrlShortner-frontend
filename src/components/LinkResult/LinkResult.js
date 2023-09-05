@@ -20,20 +20,12 @@ function LinkResult({InputValue}) {
 
     const token=localStorage.getItem(`user`)
     console.log(token)
-    // const data = JSON.parse(token);
-    // const email = data.user.email;
-    // console.log(email)
     const headers={authorization:token}
-
-
-    // const apiUrl = process.env.REACT_APP_API_URL;
 
     const fetchData= async()=>{
        try {
         setLoading(true)
          const response = await axios.get(`https://api.shrtco.de/v2/shorten?url=${InputValue}`)
-
-        // const response = await axios.get(`${apiUrl}url=${InputValue}`);
          console.log(response)
          setShortenedURL(response.data.result.full_short_link)
      
@@ -78,22 +70,26 @@ function LinkResult({InputValue}) {
 
 
  const SaveData = async () => {
-  try {
-    if(token){
-       setCreate(true)
-       const response = await AxiosServer.post('/save', {
-       fullUrl: fullUrl,
-       shortenedURL: shortenedURL,
-    },{headers});
-    console.log(response);
-    }else{
-      toast.error('Please Login');
-    }
-  } catch (error) {
-    console.error('Error saving data:', error);
-    setError('Error saving data. Please try again.');  
-  }
-};
+   try {
+     if (token) {
+       setCreate(true);
+       const response = await AxiosServer.post(
+         "/save",
+         {
+           fullUrl: fullUrl,
+           shortenedURL: shortenedURL,
+         },
+         { headers }
+       );
+       window.location.reload(); 
+     } else {
+       toast.error("Please Login");
+     }
+   } catch (error) {
+     console.error("Error saving data:", error);
+     setError("Error saving data. Please try again.");
+   }
+ };
 
 
   return (

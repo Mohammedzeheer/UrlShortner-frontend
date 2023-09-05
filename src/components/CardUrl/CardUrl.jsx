@@ -13,7 +13,6 @@ const CardUrl = () => {
   const [showAllUrl, setshowAllUrl] = useState(false);
   const [copiedStatus, setCopiedStatus] = useState([]);
 
-
   const visibleURL = showAllUrl ? Url : Url.slice(0, 1);
 
   const token=localStorage.getItem(`user`)
@@ -30,16 +29,10 @@ const CardUrl = () => {
   };
 
   useEffect(() => {
-    fetchUrl()
+    if(token){
+       fetchUrl()
+    }
   },[])
-
-
-  const handleCopy = () => {
-    setCopied(true);
-    setTimeout(() => {
-      setCopied(false);
-    }, 1000);
-  };
 
 
   const handleCopy1 = (index) => {
