@@ -9,7 +9,7 @@ function InputShortner({setInputValue}) {
   }
   return (
     // <div className="Container">
-      <div className="InputContainer">
+      <div className="InputContainer m-2">
         <h1>
           URL <span> Shortner</span>
         </h1>

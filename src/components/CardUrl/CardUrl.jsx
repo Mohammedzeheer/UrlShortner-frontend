@@ -3,13 +3,16 @@ import { AxiosServer } from '../../api/AxiosInstance';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import { VscCopy } from "react-icons/vsc";
 import { FcOk } from "react-icons/fc";
+import { MdDelete } from "react-icons/md";
+
 import './CardUrl.css'
 
 const CardUrl = () => {
   const [Url, setUrl] = useState([]);
   const [copied, setCopied] = useState(false);
   const [showAllUrl, setshowAllUrl] = useState(false);
-  const [copiedIndexes, setCopiedIndexes] = useState([]);
+  const [copiedStatus, setCopiedStatus] = useState([]);
+
 
   const visibleURL = showAllUrl ? Url : Url.slice(0, 1);
 
@@ -20,6 +23,7 @@ const CardUrl = () => {
     try {
       const response = await AxiosServer.get(`/getUrl`,{headers});
       setUrl(response.data.Url)
+      setCopiedStatus(new Array(response.data.Url.length).fill(false));
     } catch (error) {
       console.error(error);
     }
@@ -37,17 +41,31 @@ const CardUrl = () => {
     }, 1000);
   };
 
-  const handleCopy1 = (index) => {
-    const newCopied = [...copied];
-    newCopied[index] = true;
-    setCopiedIndexes(newCopied);
 
+  const handleCopy1 = (index) => {
+    const newCopiedStatus = [...copiedStatus];
+    newCopiedStatus[index] = true;
+    setCopiedStatus(newCopiedStatus);
+  
     setTimeout(() => {
-      newCopied[index] = false;
-      setCopiedIndexes(newCopied);
+      newCopiedStatus[index] = false;
+      setCopiedStatus(newCopiedStatus);
     }, 1000);
   };
+  
 
+  const handleDelete = async (index) => {
+    try {
+      const urlToDelete = Url[index];
+      console.log(urlToDelete)
+      await AxiosServer.delete(`/deleteUrl/${urlToDelete._id}`, { headers });
+      const updatedUrl = [...Url];
+      updatedUrl.splice(index, 1);
+      setUrl(updatedUrl);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <>
       {token && (
@@ -73,15 +91,22 @@ const CardUrl = () => {
                         <span className="font-bold pr-2">Shorten Url</span>{" "}
                         {url.short}
                       </p>
-                      <CopyToClipboard text={url.short} onCopy={handleCopy}>
+                      <CopyToClipboard text={url.short} onCopy={() => handleCopy1(index)}>
                         <div className="ml-auto">
-                          {copied ? (
+                          {copiedStatus[index] ? (
                             <FcOk />
                           ) : (
                             <VscCopy className="text-black text-lg hover:text-orange-500 cursor-pointer" />
                           )}
                         </div>
                       </CopyToClipboard>
+
+                      <MdDelete
+                        className="text-red-500 text-lg hover:text-red-700 cursor-pointer ml-2"
+                        onClick={() => handleDelete(index)}
+                      />
+
+
                     </div>
                   </div>
                 </div>
